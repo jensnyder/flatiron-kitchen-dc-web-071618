@@ -1,0 +1,14 @@
+<% if @recipe.errors %>
+<ul><% @recipe.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for @recipe do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  <%= f.label "Select from existing ingredients:" %><br>
+  <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %><br>
+  <%= f.submit %>
+<% end %>

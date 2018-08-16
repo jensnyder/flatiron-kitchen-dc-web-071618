@@ -1,0 +1,11 @@
+<h1><%= @ingredient.name %><h1>
+
+<h4>This ingredient is found in:</h4>
+<ul><% @ingredient.recipes.each do |rec| %>
+  <li><%= link_to rec.name, recipe_path(rec) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Edit Ingredient", edit_ingredient_path(@ingredient) %><br>
+<%= link_to "Delete Ingredient", ingredient_path(@ingredient), method: :delete %>
+<%= link_to  "View All Ingredients", ingredients_path %>
